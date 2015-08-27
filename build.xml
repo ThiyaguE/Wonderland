@@ -31,7 +31,7 @@
 
 	<target name="clean">
 		<delete>
-		   <fileset dir="conf">
+		   <fileset dir="${env.CONF_FILE_PATH}">
 			<include name="*.properties"/>
 		   </fileset>
 		</delete>
@@ -84,7 +84,7 @@
         </target>
 
 	<target name="generatekey">
-		<crypter keyFile="key.ser" generateKey="true" keyAlgorithm="Blowfish"/>
+		<crypter keyFile="${env.CONF_FILE_PATH}/key.ser" generateKey="true" keyAlgorithm="Blowfish"/>
 	</target>
 
 </project>
