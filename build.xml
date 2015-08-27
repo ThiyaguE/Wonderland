@@ -1,0 +1,89 @@
+<project name="foobar" default="migrate" xmlns:flyway="antlib:org.flywaydb.ant" basedir=".">
+<property file="build.properties"/>
+<property environment="env"/>
+<property name="flyway.locations" value="filesystem:sql"/>
+<property name="file" value="conf/${env.CONF_FILE}"/>
+<property name="flyway.target" value="${migrate.target}"/>
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="libs/ant-contrib-1.0b3.jar"/>
+		</classpath>
+	</taskdef>
+
+	<taskdef uri="antlib:org.flywaydb.ant" resource="org/flywaydb/ant/antlib.xml">
+        	 <classpath>
+                	<pathelement location="libs/flyway-core-3.2.1.jar"/>
+	                <pathelement location="libs/flyway-ant-3.2.1.jar"/>
+        	 </classpath>
+	</taskdef>
+
+        <taskdef name="crypter" classname="za.co.massdosage.ant.Crypter">
+                  <classpath>
+                        <pathelement location="libs/crypter-ant.jar"/>
+                  </classpath>
+         </taskdef>
+
+
+        <path id="flyway.classpath">
+                 <fileset dir="libs" includes="ojdbc6.jar"/>
+        </path>
+
+	<target name="clean">
+		<delete>
+		   <fileset dir="conf">
+			<include name="*.properties"/>
+		   </fileset>
+		</delete>
+	</target>
+
+	<target name="show-db-url" depends="decrypt-properties">
+		<echo message="DB URL:${flyway.url}"/>
+		<echo message="User: ${flyway.user}"/>
+	</target>
+
+        <target name="baseline" depends="info">
+                <flyway:baseline/>
+		<antcall target="clean"/>
+        </target>
+
+    	<target name="info" depends="show-db-url">
+       		 <flyway:info/>
+		 <antcall target="clean"/>
+    	</target>
+
+        <target name="migrate" depends="info">
+                 <property name="flyway.outOfOrder" value="true"/>
+                 <flyway:migrate/>
+		 <antcall target="clean"/>
+		 <antcall target="info"/>
+        </target>
+
+        <target name="migrate-target" depends="info">
+                 <flyway:migrate/>
+		 <antcall target="clean"/>
+        </target>
+
+	<target name="repair" depends="info">
+		<flyway:repair/>
+		<antcall target="clean"/>
+	</target>
+
+	<target name="validate" depends="info">
+		<flyway:validate/>
+		<antcall target="clean"/>
+	</target>
+
+        <target name="encrypt-properties">
+        	<crypter encrypt="true" keyFile="key.ser" inputFile="conf/${env.CONF_FILE}" outputFile="conf/${env.CONF_FILE}.encrypted"/>
+        </target>
+
+        <target name="decrypt-properties">
+                <crypter encrypt="false" keyFile="key.ser" inputFile="conf/${env.CONF_FILE}.encrypted" outputFile="conf/${env.CONF_FILE}"/>
+		<property file="conf/${env.CONF_FILE}"/>
+        </target>
+
+	<target name="generatekey">
+		<crypter keyFile="key.ser" generateKey="true" keyAlgorithm="Blowfish"/>
+	</target>
+
+</project>
