@@ -45,6 +45,7 @@
         <target name="baseline" depends="info">
                 <flyway:baseline/>
 		<antcall target="clean"/>
+                <antcall target="info"/>
         </target>
 
     	<target name="info" depends="show-db-url">
@@ -62,16 +63,19 @@
         <target name="migrate-target" depends="info">
                  <flyway:migrate/>
 		 <antcall target="clean"/>
+                <antcall target="info"/>
         </target>
 
 	<target name="repair" depends="info">
 		<flyway:repair/>
 		<antcall target="clean"/>
+                <antcall target="info"/>
 	</target>
 
 	<target name="validate" depends="info">
 		<flyway:validate/>
 		<antcall target="clean"/>
+                <antcall target="info"/>
 	</target>
 
         <target name="encrypt-properties">
