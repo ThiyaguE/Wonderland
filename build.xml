@@ -1,7 +1,6 @@
 <project name="foobar" default="migrate" xmlns:flyway="antlib:org.flywaydb.ant" basedir=".">
 <property file="build.properties"/>
 <property environment="env"/>
-<property name="flyway.locations" value="filesystem:sql"/>
 <property name="conf.file" value="${env.CONF_FILE}"/>
 <property name="conf.filepath" value="${env.CONF_FILE_PATH}"/>
 <property name="flyway.target" value="${env.TRG_RLS}"/>
@@ -52,7 +51,6 @@
                 <echo message="${conf.filepath}"/>
                 <echo message="${conf.file}"/>
        		 <flyway:info/>
-		 <antcall target="clean"/>
     	</target>
 
         <target name="migrate" depends="info">
