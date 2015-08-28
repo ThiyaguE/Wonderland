@@ -61,6 +61,7 @@
         </target>
 
         <target name="migrate-target" depends="info">
+	<property name="flyway.target" value="${env.TRG_RLS}"/>
                  <flyway:migrate/>
 		 <antcall target="clean"/>
                 <antcall target="info"/>
