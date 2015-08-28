@@ -79,17 +79,19 @@
 	</target>
 
         <target name="encrypt-properties">
-        	<crypter encrypt="true" keyFile="${env.CONF_FILE_PATH}/key.ser" inputFile="${env.CONF_FILE_PATH}/${env.CONF_FILE}" outputFile="${env.CONF_FILE_PATH}/${env.CONF_FILE}.encrypted"/>
+		<echo message="${conf.filepath}"/>
+		<echo message="${conf.file}"/>
+        	<crypter encrypt="true" keyFile="${conf.filepath}/key.ser" inputFile="${conf.filepath}/${conf.file}" outputFile="${conf.filepath}/${conf.file}.encrypted"/>
 		<antcall target="clean"/>
         </target>
 
         <target name="decrypt-properties">
-                <crypter encrypt="false" keyFile="${env.CONF_FILE_PATH}/key.ser" inputFile="${env.CONF_FILE_PATH}/${env.CONF_FILE}.encrypted" outputFile="${env.CONF_FILE_PATH}/${env.CONF_FILE}"/>
-		<property file="${env.CONF_FILE_PATH}/${env.CONF_FILE}"/>
+                <crypter encrypt="false" keyFile="${conf.filepath}/key.ser" inputFile="${conf.filepath}/${conf.file}.encrypted" outputFile="${conf.filepath}/${conf.file}"/>
+		<property file="${conf.filepath}/${conf.file}"/>
         </target>
 
 	<target name="generatekey">
-		<crypter keyFile="${env.CONF_FILE_PATH}/key.ser" generateKey="true" keyAlgorithm="Blowfish"/>
+		<crypter keyFile="${conf.filepath}/key.ser" generateKey="true" keyAlgorithm="Blowfish"/>
 	</target>
 
 </project>
