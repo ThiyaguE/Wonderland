@@ -26,7 +26,7 @@
 
 
         <path id="flyway.classpath">
-                 <fileset dir="libs" includes="ojdbc6.jar"/>
+                 <fileset dir="libs" includes="*.jar"/>
         </path>
 
 	<target name="clean">
