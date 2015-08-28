@@ -3,7 +3,6 @@
 <property environment="env"/>
 <property name="conf.file" value="${env.CONF_FILE}"/>
 <property name="conf.filepath" value="${env.CONF_FILE_PATH}"/>
-<property name="flyway.target" value="${env.TRG_RLS}"/>
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
 			<pathelement location="libs/ant-contrib-1.0b3.jar"/>
