@@ -49,6 +49,8 @@
         </target>
 
     	<target name="info" depends="show-db-url">
+                <echo message="${conf.filepath}"/>
+                <echo message="${conf.file}"/>
        		 <flyway:info/>
 		 <antcall target="clean"/>
     	</target>
