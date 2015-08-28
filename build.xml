@@ -84,6 +84,7 @@
 
         <target name="decrypt-properties">
                 <crypter encrypt="false" keyFile="${env.CONF_FILE_PATH}/key.ser" inputFile="${env.CONF_FILE_PATH}/${env.CONF_FILE}.encrypted" outputFile="${env.CONF_FILE_PATH}/${env.CONF_FILE}"/>
+		<antcall target="clean"/>
 		<property file="${env.CONF_FILE_PATH}/${env.CONF_FILE}"/>
         </target>
 
