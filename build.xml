@@ -30,7 +30,7 @@
 	<target name="clean">
 		<delete>
 		   <fileset dir="${env.CONF_FILE_PATH}">
-			<include name="*.properties"/>
+			<include name="*.conf"/>
 		   </fileset>
 		</delete>
 	</target>
