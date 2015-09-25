@@ -1,0 +1,75 @@
+export http_proxy=http://VDSI\\v006608:Hashini\!12@proxy.verizon.com:80
+cd /apps/opt/flyway_build
+rm -rf /apps/opt/flyway_build/wonderland
+git config --global http.proxy 'http://VDSI\v006608:Hashini!\12@proxy.ebiz.verizon.com:80'
+git config --global https.proxy 'https://VDSI\v006608:Hashini!12@proxy.ebiz.verizon.com:80'
+git clone https://github.com/ThiyaguE/Wonderland.git
+
+git config --global http.proxy 'http://VDSI\v006608:Hashini!12@proxy.ebiz.verizon.com:80'
+git config --global https.proxy 'https://VDSI\v006608:Hashini!12@proxy.ebiz.verizon.com:80'
+
+git clone https://ThiyaguE:Changeme5@github.com/ThiyaguE/Wonderland.git
+
+#!/bin/ksh
+export JAVA_HOME=/apps/opt/jdk1.7.0_79
+export ANT_HOME=/apps/opt/ant-1.8.1
+export PATH=${JAVA_HOME}/bin:${ANT_HOME}/bin:${PATH}
+export CONF_FILE_PATH=/apps/opt/flyway-3.2.1/conf
+
+if [ $env = "SIT" ]; then
+export CONF_FILE="flyway.conf"
+echo "Selected config file $CONF_FILE"
+elif [ $env = "UAT" ]; then
+export CONF_FILE="flywayUAT.conf"
+echo "Selected config file $CONF_FILE"
+else
+echo "Please select the config file"
+exit
+fi
+
+cd /apps/opt/flyway_build/Wonderland
+
+if [ $fly_cmd = "Info" ]; then
+ant -f build.xml info
+elif [ $fly_cmd = "Validate" ]; then
+ant -f build.xml validate
+elif [ $fly_cmd = "Migrate" ]; then
+ant -f build.xml migrate
+elif [ $fly_cmd = "Repair" ]; then
+ant -f build.xml repair
+elif [ $fly_cmd = "Migrate-Target" ]; then
+ant -f build.xml migrate-target
+elif [ $fly_cmd = "Baseline" ]; then
+ant -f build.xml baseline
+elif [ $fly_cmd = "Encrypt" ]; then
+ant -f build.xml encrypt-properties
+elif [ $fly_cmd = "Decrypt" ]; then
+ant -f build.xml decrypt-properties
+else
+echo "Select the flyway command to run"
+fi
+
+if [ $gg_status = "GG_STOP" ]; then
+	if [ $env = "SIT" ]; then
+    cd /apps/opt/flyway-3.2.1
+    ./stopGGSIT.sh
+    elif [ $env = "UAT" ]; then
+    cd /apps/opt/flyway-3.2.1
+    ./stopGGUAT.sh
+    else
+    echo "GG STOP not selected"
+    fi
+fi
+
+if [ $gg_status = "GG_START" ]; then
+	if [ $env = "SIT" ]; then
+    cd /apps/opt/flyway-3.2.1
+    ./startGGSIT.sh
+    elif [ $env = "UAT" ]; then
+    cd /apps/opt/flyway-3.2.1
+    ./startGGUAT.sh
+    else
+    echo "GG START not selected"
+    fi
+fi
+    
