@@ -1,0 +1,57 @@
+https://www.linux.com/learn/tutorials/796387-beginning-git-and-github-for-linux-users/
+
+
+mysql -u flyway -p -h 113.128.160.191
+
+
+
+service mysqld start
+
+/usr/bin/mysqladmin -u root password mysql
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'113.128.160.186' with grant option;
+
+mysql -u root -h 113.128.160.186
+
+create user 'ggadm'@'113.128.160.197' identified by 'ggadm';
+
+grant all privileges on *.* to 'ggadm'@'113.128.160.197' with grant option;
+
+mysql -u ggadm  -p -h 113.128.160.186
+
+
+
+git config --global credential.helper 'cache --timeout=7200'
+
+
+
+
+V47368-01.zip Oracle GoldenGate V12.1.2.1.0 for MySQL on Windows (64 bit)
+
+V47367-01.zip Oracle GoldenGate V12.1.2.1.0 for MySQL on Linux x86-64
+
+V73219-01.zip Oracle GoldenGate V12.1.2.1.1 for DB2 9.7 on Linux x86-64
+
+
+--- YUM 
+
+yum list installed
+yum remove pkgname
+
+
+-- GG
+
+DBLOGIN SOURCEDB test@113.128.160.186:3306, userid ggadm, password ggadm;
+
+
+-- SCP
+
+scp *.sql root@113.128.160.197:/apps/opt/sw/flyway-3.2.1/sql/
+
+-- SSH
+
+
+ssh-keygen -t rsa
+ssh root@113.128.160.197 mkdir -p .ssh
+cd .ssh
+scp id_rsa.pub root@113.128.160.197:.ssh/authorized_keys
