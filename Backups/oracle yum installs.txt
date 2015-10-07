@@ -1,0 +1,74 @@
+export ORACLE_HOME=/apps/opt/oracle/product/11.2.0/dbhome_1
+
+
+
+[root@scsblnx-619663 logs]# history | grep -i yum
+[root@scsblnx-619663 opt]# history | grep -i yum
+   37  yum search mysql
+   38  yum install mysql-server.x86_64
+   39  yum install mysql.x86_64
+   40  yum install mysql-connector-odbc.x86_64
+   41  yum search mysql
+   42  yum install mysql-connector-java.x86_64
+   44  yum install mysql-connector-java.x86_64
+   49  yum search mysql
+  124  yum search x11
+  125  yum install xorg-x11-apps.x86_64
+  126  yum install xorg-x11-server-utils.x86_64
+  127  yum install xorg-x11-fonts-*
+  134  yum install gedit
+  145  yum install binutils-2.20.51.0.2-5.11.el6
+  146  yum install compat-libcap1-1.10-1
+  147  yum install compat-libstdc++-33-3.2.3-69.el6
+  148  yum install compat-libstdc++-33-3.2.3-69.el6.i686
+  149  yum install gcc-4.4.4-13.el6
+  150  yum install gcc-c++-4.4.4-13.el6
+  151  yum install glibc-2.12-1.7.el6
+  152  yum search  gcc-c++
+  153  yum install gcc-c++.x86_64
+  154  yum install glibc-2.12-1.7.el6
+  155  yum install glibc-devel-2.12-1.7.el6
+  156  yum install glibc-devel-2.12-1.7.el6.i686
+  157  yum search glibc-devel
+  158  yum install glibc-devel.x86_64
+  159  yum install libgcc-4.4.4-13.el6
+  160  yum search libgcc
+  161  yum install libgcc.x86_64
+  162  yum install libgcc.i686
+  163  yum search libstdc++
+  164  yum install libstdc++*
+  165  yum install libstdc++.i686
+  166  yum install libaio-0.3.107-10.el6
+  167  yum search libaio-*
+  168  yum search libaio-
+  169  yum install libaio-devel.i686
+  170  yum install libaio-devel.x86_64
+  171  yum search libaio
+  172  yum install libaio.i686
+  173  yum install libaio.x86_64
+  174  yum install make-3.81-19.el6
+  175  yum install sysstat-9.0.4-11.el6
+  185  history | grep -i yum
+
+   30  yum search libxtst6
+   31  yum search libxtst
+   32  yum install libXtst*
+   36  yum install libXp*
+   37  yum install libXp*.i686
+   41  yum search unixODBC*
+   42  yum search unixODBC
+   43  yum install unixODBC-devel*
+   44  yum search elfutils-
+   45  yum install elfutils-*
+   52  yum search pdksh
+   53  yum install mksh.x86_64
+   54  yum search make
+   55  yum install make.x86_64
+   72  yum search glibc-headers-*
+   73  yum search glibc-headers
+   74  yum install glibc-headers.x86_64
+   88  yum -y install glibc-devel.i686 glibc-devel
+   89  yum install glibc-devel
+   90  yum search glibc-devel
+   91  yum install glibc-devel.x86_64
+   94  history | grep -i yum
