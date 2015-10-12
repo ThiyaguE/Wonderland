@@ -1,15 +1,3 @@
-export http_proxy=http://VDSI\\v006608:Hashini\!12@proxy.verizon.com:80
-cd /apps/opt/flyway_build
-rm -rf /apps/opt/flyway_build/wonderland
-git config --global http.proxy 'http://VDSI\v006608:Hashini!\12@proxy.ebiz.verizon.com:80'
-git config --global https.proxy 'https://VDSI\v006608:Hashini!12@proxy.ebiz.verizon.com:80'
-git clone https://github.com/ThiyaguE/Wonderland.git
-
-git config --global http.proxy 'http://VDSI\v006608:Hashini!12@proxy.ebiz.verizon.com:80'
-git config --global https.proxy 'https://VDSI\v006608:Hashini!12@proxy.ebiz.verizon.com:80'
-
-git clone https://ThiyaguE:Changeme5@github.com/ThiyaguE/Wonderland.git
-
 #!/bin/ksh
 export JAVA_HOME=/apps/opt/jdk1.7.0_79
 export ANT_HOME=/apps/opt/ant-1.8.1
